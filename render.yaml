@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: casino-games-api
+    runtime: docker
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /ready
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 3030
+      - key: CASINO_SOURCES
+        value: slotcatalog,slotstemple,livebet
+      - key: CASINO_SOURCE_TIMEOUT_MS
+        value: 90000
+      - key: CASINO_SOURCE_RETRIES
+        value: 1
+      - key: API_RATE_LIMIT_WINDOW_MS
+        value: 60000
+      - key: API_RATE_LIMIT_MAX
+        value: 60

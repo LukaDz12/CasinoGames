@@ -1,0 +1,34 @@
+{
+  "name": "casino-games",
+  "version": "0.1.0",
+  "description": "Modular casino game aggregator with API, CLI, and plugin architecture.",
+  "main": "src/app.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/app.js",
+    "start:api": "node src/api/server.js",
+    "start:cli": "node src/cli/index.js",
+    "dev": "node src/api/server.js",
+    "check:syntax": "node --check src/app.js && node --check src/api/server.js && node --check src/api/jobs.js && node --check src/core/engine.js",
+    "smoke:check": "node scripts/smoke-check.js",
+    "smoke:local": "node scripts/smoke-check.js http://localhost:3030"
+  },
+  "keywords": [
+    "casino",
+    "aggregator",
+    "api",
+    "cli",
+    "plugins"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "express-rate-limit": "^7.4.1",
+    "express": "^4.21.2",
+    "helmet": "^8.1.0",
+    "puppeteer": "^24.41.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}

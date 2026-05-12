@@ -1,0 +1,30 @@
+name: Smoke Check
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: Base URL to verify, for example https://casino-games-api.onrender.com
+        required: false
+        type: string
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run smoke checks
+        env:
+          SMOKE_BASE_URL: ${{ inputs.base_url || vars.SMOKE_BASE_URL }}
+        run: npm run smoke:check
